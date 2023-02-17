@@ -51,11 +51,11 @@ pip install git+https://github.com/RedHeartSecretMan/go_subtitle.git
 > ***Provides two ways to run the command line, by specifying python module `python -m subtitler [command]` or trigger key `go_subtitle [command]`***
 
 ```shell
-# 指定输入目录
+# 必须指定输入目录
 python -m subtiter -i "input_dir"
 
-# 也可以指定输出目录（所有路径都可以不使用引号）
-python -m subtiter -i "input_dir" -o output_dir 
+# 可额外指定输出目录（所有路径都可以不使用引号）指定模型类型，指定cpu推理线程数
+go_subtitle -i ./data -o ./data/result -mn large --threads 4 
 ```
 
 ![runing](./assets/runing.png)
@@ -143,6 +143,14 @@ print(result.text)
 
 
 
+## Planning
+
+**一、目前翻译功能的目标语言只支持英语，考虑支持中文**
+
+**二、目前缺乏高级功能，后续考虑加入内容摘要功能以及类似沐神的视频自剪辑功能**
+
+
+
 ## Reference
 
 [[Blog]](https://openai.com/blog/whisper)
@@ -188,5 +196,4 @@ print(result.text)
 > ***The `large` model has two versions large-v1 and  large-v2. The figure below shows word error rates(WER) by language when using the large-v2 model for the Fleurs dataset***
 
 ![WER breakdown by language](./assets/language-breakdown.svg)
-
 
