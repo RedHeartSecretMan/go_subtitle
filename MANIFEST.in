@@ -1,0 +1,7 @@
+include requirements.txt
+include README.md
+include LICENSE
+include subtitler/assets/*
+include subtitler/assets/gpt2/*
+include subtitler/assets/multilingual/*
+include subtitler/normalizers/english.json
