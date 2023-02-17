@@ -40,6 +40,8 @@ pip install -U go_subtitle
 pip install git+https://github.com/RedHeartSecretMan/go_subtitle.git
 ```
 
+![install](./assets/install.png)
+
 
 
 ## Usage
