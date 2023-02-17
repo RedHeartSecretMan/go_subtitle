@@ -94,7 +94,7 @@ audio_path = subtitler.generate_subtitle(model, avpath)
 model = subtitler.load_model("medium")
 
 # load audio and pad/trim it to fit 30 seconds
-audio = subtitler.load_audio("assets/data/test/audios/Mojito.flac")
+audio = subtitler.load_audio("assets/data/test/audios/Mojito.mp3")
 audio = subtitler.pad_or_trim(audio)
 
 # make log-Mel spectrogram and move to the same device as the model
