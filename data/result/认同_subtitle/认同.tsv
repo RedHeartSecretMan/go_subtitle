@@ -1,0 +1,204 @@
+start	end	text
+0	4880	Do not hit the like button or the dislike button, at least not yet.
+4880	10820	I want you to consider a problem that's been one of the most controversial in math and philosophy over the past 20 years.
+10820	15220	There is no consensus answer, so I want you to listen to the problem
+15220	20660	and then vote for the answer you prefer using the like and dislike buttons, okay?
+20660	22420	Here is the setup.
+22420	28960	Sleeping Beauty volunteers to be the subject of an experiment, and before it starts, she's informed of the procedure.
+28960	34700	On Sunday night, she will be put to sleep, and then a fair coin will be flipped.
+34700	39740	If that coin comes up heads, she'll be awakened on Monday and then put back to sleep.
+39740	44080	If the coin comes up tails, she will also be awakened on Monday and put back to sleep,
+44080	48540	but then she will be awakened on Tuesday as well and then put back to sleep.
+48540	53680	Now, each time she gets put back to sleep, she will forget that she was ever awakened.
+53680	58560	In the brief period, anytime she's awake, she will be told no information,
+58560	61160	but she'll be asked one question.
+61160	65760	What do you believe is the probability that the coin came up heads?
+65760	67760	So how should she answer?
+67760	72400	Feel free to pause the video and answer the question for yourself right now.
+72400	76540	This was my reaction after hearing the problem for the first time.
+76540	80740	I mean, the intuitive answer that pops into my head is clearly 1 in 3.
+80740	87320	It could be the Monday when it came up heads, or it could be the Monday when it came up tails,
+87320	91160	or it could be the Tuesday when it came up tails.
+91160	95800	But you know what's really interesting is you just answered that the probability of a coin coming up heads is 1 in 3.
+95800	99700	I think a lot of this comes down to what specific question is asked of her.
+99700	103400	What is the probability that a fair coin flipped gives heads?
+103400	104900	That's 50%.
+104900	109000	What is the probability that the coin came up heads?
+109000	112580	I would say the answer is a third from her perspective.
+112580	116580	It's remarkably the same question.
+116580	120680	The simple reason why Sleeping Beauty should say the probability of heads is 1 in 3
+120680	123280	is because she knows the coin is fair.
+123280	126980	Nothing changes between when the coin is flipped and when she wakes up.
+126980	133560	And she knew for a fact that she would be woken up, and she receives no new information when that happens.
+133560	137400	Imagine that instead of flipping the coin after she's asleep,
+137400	141300	the experimenters flip the coin first and ask her immediately,
+141300	144240	what's the probability that the coin came up heads?
+144240	146600	Well, she would certainly say 1 in half.
+146600	150480	So why should anything change after she goes to sleep and wakes up?
+150480	153680	This is known as the halfer position.
+153680	155780	But there is another way to look at it.
+155780	159220	Others would argue that something does change when she's awakened.
+159220	161780	I mean, it seems like she gets no new information.
+161780	163520	There are no calendars.
+163520	166860	No one tells her anything, and she knew that she would be woken up.
+166860	169600	But she actually learns something important.
+169600	173940	She learns that she's gone from existing in a reality where there are two possible states,
+173940	176800	the coin came up either heads or tails,
+176800	180400	to existing in a reality where there are three possible states,
+180400	183640	Monday heads, Monday tails, or Tuesday tails.
+183640	188020	And therefore, she should assign equal probability to each of these three outcomes,
+188020	190820	where heads only occurred in one.
+190820	195020	So the probability that the coin came up heads is 1 third.
+195020	198160	This is known as the thirder position.
+198160	203720	Now, I know it seems wrong to suggest that a fair coin should have a 1 third probability of coming up heads,
+203720	207000	but that's because the question she's asked is subtly different.
+207000	210000	The implied question is, given you're awake,
+210000	212340	what's the probability that the coin came up heads?
+212340	214500	And that is 1 third.
+214500	218140	Now, halfers would counter that just because there are three possible outcomes
+218140	220580	doesn't mean they are each equally likely.
+220580	222520	In the Monty Hall problem, for example,
+222520	225580	the contestant ultimately has to choose between two doors.
+225580	228320	But it'd be wrong to assign them 50-50 odds.
+228320	232700	The prize is actually twice as likely to be behind one door than the other.
+232700	234160	In the Sleeping Beauty problem,
+234160	237860	we know a heads outcome and a tails outcome are equally likely,
+237860	241240	so the chance of waking up on Monday with heads is 50%,
+241240	246200	and the chance of waking up on Monday or Tuesday with tails should be 50%.
+246200	251780	Therefore, the tails probability gets split across two days, 25% each.
+251780	254080	But if you repeat the experiment over and over,
+254080	257280	which you can try for yourself by repeatedly flipping a coin,
+257280	260560	you find she wakes up a third of the time Monday heads,
+260560	262480	a third of the time Monday tails,
+262480	265020	and a third of the time Tuesday tails,
+265020	270360	not 50-25-25 like the previous analysis would suggest.
+270360	274200	So if you were Sleeping Beauty and you were awakened and asked,
+274200	276700	what's the probability the coin came up heads?
+276700	278440	What would you say?
+278440	282000	If you would say 1 third, then hit the like button.
+282000	285380	If you would say 1 half, hit the dislike button.
+285380	287880	The answer may seem obvious to you,
+287880	292520	but you should know that to other people, the other answer seems equally obvious.
+292520	295680	And that's why hundreds and hundreds of philosophy papers
+295680	299760	have been published on this problem over the past 22 years.
+299760	302660	There have been many variations of this problem,
+302660	306100	like what if instead of being woken up twice if the coin lands tails,
+306100	308940	she's instead woken up a million times?
+308940	312540	If the coin comes up heads, she's still woken only once.
+312540	315640	Doesn't it seem absurd in this case when Sleeping Beauty wakes up
+315640	319720	to say that it was just as likely that the coin landed heads as tails,
+319720	323180	when we know there are a million more wakeups in the tails case
+323180	324720	than in the heads case?
+324720	329060	I mean, if you reach into a bag of one white marble and a million black marbles,
+329060	332700	what are the chances that you pull out that one white marble?
+332700	336700	I was pretty convinced by this, and I considered myself a thirder,
+336700	339600	but this same argument is used to convince people
+339600	341600	that we're living in a simulation.
+341600	345140	The thinking goes that our computing technology has improved so dramatically,
+345140	347540	even over just the last 40 years,
+347540	350520	that we can imagine a time in the not-too-distant future
+350520	354820	when we can create a completely realistic simulation of our world.
+354820	356360	And once that occurs,
+356360	360420	it should be trivial to make unlimited copies of that simulation.
+360420	363060	And then if you were to ask someone if they're living in a simulation,
+363060	365400	they would have to admit that they probably are,
+365400	368060	because there are many more instances of that existence
+368060	371400	than the one true external reality.
+371400	373540	But how do we know that this hasn't happened already,
+373540	375940	and that we're living inside a simulation?
+375940	379140	I mean, if it can happen, then it probably has happened,
+379140	381080	and we are living in a simulation.
+381080	385220	This seems like the logical conclusion of the thirder worldview.
+385220	388060	Now, I personally don't buy that I'm living in a simulation,
+388060	390060	and I think most people don't buy it,
+390060	392480	but maybe that's just a logical bias.
+392480	393760	But there's another thought experiment
+393760	397200	that makes me seriously reconsider the thirder position.
+397200	401140	Let's say there's a soccer game between a really great team like Brazil
+401140	404940	and a less world-dominating team like Canada.
+404940	408140	So the odds are 80-20 in Brazil's favor.
+408140	411740	Now, a researcher is going to put you to sleep before the game starts.
+411740	414980	And if Brazil wins, they'll wake you up one time.
+414980	418820	But if Canada wins, they'll wake you up 30 times in a row.
+418820	420360	And just like Sleeping Beauty,
+420360	422880	you won't remember if you've been woken before.
+422880	425020	Okay, so the game is about to start.
+425020	427660	You fall asleep.
+427660	429620	And now you're woken up.
+429620	432060	Who do you think won the game?
+432060	434800	The thirder would say Canada,
+434800	437000	but I would almost certainly say Brazil.
+437000	438800	I mean, why should I give any weight
+438800	441900	to what the researcher would have done if Canada had won
+441900	444680	when I'm fairly confident that they won't?
+444680	447540	To extend this, let's say Brazil plays Canada five times,
+447540	450220	and we do this experiment each time.
+450220	452880	Well, then if you say Brazil each time you're woken up,
+452880	456880	you'll probably be right about four out of five of the games.
+456880	458560	But if you said Canada every time,
+458560	460820	you would be wrong about those four games,
+460820	462820	but right 30 times in a row
+462820	466320	when you're repeatedly asked about Canada's one victory.
+466320	467660	If you stand to win a bet
+467660	469400	by correctly answering the question,
+469400	471960	then by all means, you should bet on Canada.
+471960	474300	But if you want to correctly pick the winner
+474300	477580	of more of the games, well, then you should say Brazil.
+477580	479300	And this is what's at the heart of the dispute
+479300	482380	between halfers and thirders in the Sleeping Beauty problem.
+482380	484480	If you want to be right about the outcome
+484480	485840	of the coin tosses,
+485840	488880	well, you should say the probability of heads is a half.
+488880	491780	But if you want to answer more questionings correctly,
+491780	494420	well, then you should say one third.
+494420	497500	I want to leave you with one last thought experiment.
+497500	499220	Imagine that you know for a fact
+499220	502460	that before our universe began, there was a coin flip.
+502460	503800	And if it came up heads,
+503800	506560	only a single universe would be created.
+506560	507860	But if it came up tails,
+507860	510940	a quasi-infinite multiverse would be created.
+510940	512880	And in each of those multiverse universes,
+512880	515080	you'd find every possible variation of Earth
+515080	516340	and the people on it.
+516340	518780	In some versions, there would be no Earth.
+522360	523860	Now, you becoming conscious
+523860	526360	is just like Sleeping Beauty waking up.
+526360	529160	There's no way to tell if you're in that single universe
+529160	531460	or in one of the multiverse universes,
+531460	534720	but you know there are a lot more of them.
+534720	538500	So would you think that you're for sure in the multiverse
+538500	541200	or are the chances 50-50?
+541200	546200	The best way to develop intuition about probability
+548900	551740	is by working through scenarios or running simulations
+551740	553540	like we did for Sleeping Beauty.
+553540	555180	This video's sponsor, Brilliant,
+555180	557240	offers probability courses that walk you through
+557240	560080	lots of situational probability questions.
+560080	562760	Do you want to learn how to build your own simulations?
+562760	564020	Go check out Brilliant.
+564020	565860	You can try it free for 30 days
+565860	568500	at brilliant.org slash Veritasium.
+568500	570920	You know, to me, Brilliant is the best way to learn
+570920	572700	because it forces you to think critically.
+572700	574300	And it's also a lot of fun.
+574300	575800	I mean, I find learning new things
+575800	578460	and sharpening my thinking energizing.
+578460	581080	In their lessons, you model the real world with math
+581080	583580	and expand your understanding of cutting edge topics
+583580	585500	like AI and machine learning,
+585500	588940	technology that's transforming our world right now.
+588940	591180	Are we actually living in a computer simulation
+591180	592740	or a multiverse?
+592740	593680	Who knows?
+593680	595880	But with Brilliant, you might actually get started
+595880	597780	on your journey to figuring it out.
+597780	599660	They already have thousands of lessons
+599660	601860	and new ones are added every month.
+601860	602860	So if you want to get started
+602860	605260	with Brilliant's annual premium subscription,
+605260	607860	they're giving 20% off to the first 200 people
+607860	611460	to sign up via my link, brilliant.org slash Veritasium.
+611460	613640	I will put that down in the description.
+613640	616180	So I want to thank Brilliant for supporting Veritasium
+616180	631180	and I want to thank you for watching.

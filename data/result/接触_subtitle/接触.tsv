@@ -1,0 +1,112 @@
+start	end	text
+0	4760	The safest way to reopen the economy soon without causing a second wave in the virus
+4760	8120	will involve some notion of contact tracing.
+8120	12100	But there's a common misconception that this requires tracking people's locations.
+12100	16640	A friend of mine, Nikki Case, recently wrote up a post explaining why contact tracing is
+16640	21280	needed and, importantly, how the privacy-protecting variants of it work.
+21280	25980	This was done in collaboration with the epidemiologist Marcel Salathé and the security researcher
+25980	27680	Carmela Trencoso.
+27680	34760	What follows is a video adaptation of that post.
+34760	38520	As far as COVID-19 cares, there are only three kinds of people.
+38520	43840	Not infected yet, infected and contagious but with no symptoms, and infected, contagious,
+43840	45620	and showing symptoms.
+45620	50000	If you have widespread testing, you can get people to self-isolate as soon as they show
+50000	51000	symptoms.
+51000	54760	The problem is that the virus still spreads because of all the contacts that happened
+54760	57680	while people are contagious but asymptomatic.
+57680	62960	However, if when someone shows symptoms and tests positive, you isolate not only them
+62960	67760	but everyone they've been in contact with, you're staying one step ahead of the virus.
+67760	73040	The old-school way to do this is with interviews, but that's slow, it's inefficient, and
+73040	76360	frankly it's quite the intrusion on people's privacy.
+76360	79600	Another approach in the modern world would be to ask people who've tested positive
+79600	84020	to forfeit all the geolocation information from their phones and then to track down the
+84020	86700	people who have been in those same spots.
+86700	92080	But now we're well into Big Brother territory, so do we have to sacrifice privacy for health?
+92080	96120	I'll just let Niki's illustration speak for itself here.
+96120	100060	There are several clever algorithms that let you alert everyone who's recently been in
+100060	105020	contact with someone who tests positive for COVID-19, but without compromising the privacy
+105020	107280	of anyone involved.
+107280	110040	Side note here, I found this very surprising.
+110040	113480	I know it shouldn't have been since I've gone through this dance many times of thinking
+113480	118320	something's impossible only to see that cryptography makes it actually possible, but I wouldn't
+118320	122880	blame anyone at all for assuming that downloading an app that can alert everyone you've been
+122880	128320	in contact with must necessarily be tracking and revealing your location and a lot of other
+128320	129800	information.
+129800	134400	The code for these apps is entirely open, so you don't have to trust me or whoever
+134400	139680	wrote the app or Niki or anyone to believe it's doing what it really claims to be doing.
+139680	141880	Anyway, back to the post.
+141880	146000	Let's see how this works with the help of Alice and Bob.
+146000	147700	Alice gets a tracing app.
+147700	152080	Every 5 minutes, her phone sends out some uniquely pseudorandom gibberish to all the
+152080	155340	nearby devices, using Bluetooth.
+155340	160200	Because these messages are pseudorandom, they don't use GPS, and they contain no information
+160200	163740	about Alice's identity, not her location, not anything.
+163740	168680	It really is gibberish, but the key point is that this gibberish is unique.
+168680	173800	Now while her phone sends out messages, it also listens for messages from nearby phones.
+173800	175720	For example, Bob's.
+175720	181960	Bob also has a privacy-first tracing app that's compatible with, or the same, as Alice's.
+181960	186160	If Alice and Bob stay close to each other for more than 5 minutes, their phones will
+186160	189440	exchange respective strings of unique gibberish.
+189440	195720	Both of these phones remember all of the messages they said and heard over the last 14 days.
+195720	200760	Again, because the random messages contain no information, Alice's privacy is protected
+200760	204120	from Bob, and vice versa.
+204120	208120	The next day, Alice develops a dry cough and a fever.
+208120	209520	Alice gets tested.
+209520	210520	Alice has COVID-19.
+210520	213180	This is not a good day for Alice.
+213180	215160	But she won't suffer in vain.
+215160	219560	Alice tells her app to upload all of the random gibberish messages that it's been sending
+219560	222440	out to a hospital database.
+222440	225960	To do this, she uses a one-time passcode given to her by her doctor.
+225960	228200	This code is to prevent spam.
+228200	233960	The database then stores Alice's gibberish, and again, the random messages give no information
+233960	238580	about Alice, where she was, who she was with, what she was doing, or even how many people
+238580	239720	Alice met.
+239720	242060	It really is meaningless to the hospital.
+242060	244560	But it's not meaningless to Bob's phone.
+244560	248720	Bob's phone often checks this hospital list of random messages that have come in from
+248720	250880	COVID-19 positive cases.
+250880	255360	Essentially, the hospital's database is saying to all the phones out there, hey, we
+255360	257360	just got this new random gibberish.
+257360	262480	If you've seen that same random gibberish sometime in the last 14 days, it means you've
+262480	267120	been in contact with someone who just tested positive for COVID-19.
+267120	270800	Once Bob's phone recognizes some of these numbers that are the gibberish snippets now
+270800	276640	known to be associated with positive test cases, it can warn Bob to self-quarantine.
+276640	281640	So Bob cuts off the chain of transmissions, we're staying one step ahead of the virus.
+281640	282640	And that's it!
+282640	287760	That's how digital contact tracing apps can proactively prevent the spread of COVID-19
+287760	290000	while also protecting our rights.
+290000	291280	Thanks Alice and Bob.
+291280	298760	Stay safe.
+298760	303040	One important thing to realize is that you don't need everyone to have these apps.
+303040	307180	Estimates have it that about 60% would do the trick for COVID-19.
+307180	311520	Even if you can't catch all possible contacts, what you need is to catch enough so that the
+311520	316820	spread of coronavirus shifts from growing exponentially to shrinking exponentially.
+316820	322460	For those of you who know what this means, what we need is for r to drop below 1.
+322460	326080	The author of the post that this video is an adaptation of is a friend of mine, Nicky
+326080	329240	Case, who is a brilliant programmer and artist.
+329240	333920	He often makes these interactive explanations of societally important ideas, including a
+333920	338880	new one all about what happens next with COVID-19, so I would highly recommend taking a look
+338880	341000	at his work if you get the chance.
+341000	344880	He kindly made this post public domain, and moreover helped me in putting together this
+344880	346360	video.
+346360	350680	Any reasonable plan for reopening the economy without causing a second wave in the virus
+350680	354960	will include some kind of contact tracing, and given how counterintuitive the privacy
+354960	359520	protection here can be, I wanted to do all that I could to help amplify this message.
+359520	364120	If you agree, please do share either Nicky's original post or this video adaptation of
+364120	365120	it.
+365120	368680	And since the time Nicky posted that, Apple and Google have put out press releases about
+368680	371800	their own interoperable contact tracing systems.
+371800	375720	And I'll tell you, I'm one of those people who aggressively turns off location tracking
+375720	381520	as much as I can on my phone, no matter how annoying the apps can be about asking.
+381520	386320	But I'm 100% on board with these apps, because it's not tracking your location or anything
+386320	387480	like that.
+387480	391020	And if you're a nerd like me who wants to dig into cryptography a bit, I would recommend
+391020	395580	looking at the white paper and code for the DP3T algorithm, for which I've left links
+395580	397500	in the description.
+397500	402240	And as a final note, among the many unfortunate consequences of the lockdowns is a spike in
+402240	406000	calls to mental health services, like the suicide prevention hotline.
+406000	409880	If someone you know is at risk of suicide, give them a call, make sure they're doing
+409880	413760	okay, and if you're at risk, take a look at the resources in the description.
+413760	416680	And if it's an option, reach out to the people in your life to talk about what you're
+416680	439840	going through.
