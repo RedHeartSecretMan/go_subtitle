@@ -1,0 +1,335 @@
+WEBVTT
+
+00:00.000 --> 00:04.760
+The safest way to reopen the economy soon without causing a second wave in the virus
+
+00:04.760 --> 00:08.120
+will involve some notion of contact tracing.
+
+00:08.120 --> 00:12.100
+But there's a common misconception that this requires tracking people's locations.
+
+00:12.100 --> 00:16.640
+A friend of mine, Nikki Case, recently wrote up a post explaining why contact tracing is
+
+00:16.640 --> 00:21.280
+needed and, importantly, how the privacy-protecting variants of it work.
+
+00:21.280 --> 00:25.980
+This was done in collaboration with the epidemiologist Marcel Salathé and the security researcher
+
+00:25.980 --> 00:27.680
+Carmela Trencoso.
+
+00:27.680 --> 00:34.760
+What follows is a video adaptation of that post.
+
+00:34.760 --> 00:38.520
+As far as COVID-19 cares, there are only three kinds of people.
+
+00:38.520 --> 00:43.840
+Not infected yet, infected and contagious but with no symptoms, and infected, contagious,
+
+00:43.840 --> 00:45.620
+and showing symptoms.
+
+00:45.620 --> 00:50.000
+If you have widespread testing, you can get people to self-isolate as soon as they show
+
+00:50.000 --> 00:51.000
+symptoms.
+
+00:51.000 --> 00:54.760
+The problem is that the virus still spreads because of all the contacts that happened
+
+00:54.760 --> 00:57.680
+while people are contagious but asymptomatic.
+
+00:57.680 --> 01:02.960
+However, if when someone shows symptoms and tests positive, you isolate not only them
+
+01:02.960 --> 01:07.760
+but everyone they've been in contact with, you're staying one step ahead of the virus.
+
+01:07.760 --> 01:13.040
+The old-school way to do this is with interviews, but that's slow, it's inefficient, and
+
+01:13.040 --> 01:16.360
+frankly it's quite the intrusion on people's privacy.
+
+01:16.360 --> 01:19.600
+Another approach in the modern world would be to ask people who've tested positive
+
+01:19.600 --> 01:24.020
+to forfeit all the geolocation information from their phones and then to track down the
+
+01:24.020 --> 01:26.700
+people who have been in those same spots.
+
+01:26.700 --> 01:32.080
+But now we're well into Big Brother territory, so do we have to sacrifice privacy for health?
+
+01:32.080 --> 01:36.120
+I'll just let Niki's illustration speak for itself here.
+
+01:36.120 --> 01:40.060
+There are several clever algorithms that let you alert everyone who's recently been in
+
+01:40.060 --> 01:45.020
+contact with someone who tests positive for COVID-19, but without compromising the privacy
+
+01:45.020 --> 01:47.280
+of anyone involved.
+
+01:47.280 --> 01:50.040
+Side note here, I found this very surprising.
+
+01:50.040 --> 01:53.480
+I know it shouldn't have been since I've gone through this dance many times of thinking
+
+01:53.480 --> 01:58.320
+something's impossible only to see that cryptography makes it actually possible, but I wouldn't
+
+01:58.320 --> 02:02.880
+blame anyone at all for assuming that downloading an app that can alert everyone you've been
+
+02:02.880 --> 02:08.320
+in contact with must necessarily be tracking and revealing your location and a lot of other
+
+02:08.320 --> 02:09.800
+information.
+
+02:09.800 --> 02:14.400
+The code for these apps is entirely open, so you don't have to trust me or whoever
+
+02:14.400 --> 02:19.680
+wrote the app or Niki or anyone to believe it's doing what it really claims to be doing.
+
+02:19.680 --> 02:21.880
+Anyway, back to the post.
+
+02:21.880 --> 02:26.000
+Let's see how this works with the help of Alice and Bob.
+
+02:26.000 --> 02:27.700
+Alice gets a tracing app.
+
+02:27.700 --> 02:32.080
+Every 5 minutes, her phone sends out some uniquely pseudorandom gibberish to all the
+
+02:32.080 --> 02:35.340
+nearby devices, using Bluetooth.
+
+02:35.340 --> 02:40.200
+Because these messages are pseudorandom, they don't use GPS, and they contain no information
+
+02:40.200 --> 02:43.740
+about Alice's identity, not her location, not anything.
+
+02:43.740 --> 02:48.680
+It really is gibberish, but the key point is that this gibberish is unique.
+
+02:48.680 --> 02:53.800
+Now while her phone sends out messages, it also listens for messages from nearby phones.
+
+02:53.800 --> 02:55.720
+For example, Bob's.
+
+02:55.720 --> 03:01.960
+Bob also has a privacy-first tracing app that's compatible with, or the same, as Alice's.
+
+03:01.960 --> 03:06.160
+If Alice and Bob stay close to each other for more than 5 minutes, their phones will
+
+03:06.160 --> 03:09.440
+exchange respective strings of unique gibberish.
+
+03:09.440 --> 03:15.720
+Both of these phones remember all of the messages they said and heard over the last 14 days.
+
+03:15.720 --> 03:20.760
+Again, because the random messages contain no information, Alice's privacy is protected
+
+03:20.760 --> 03:24.120
+from Bob, and vice versa.
+
+03:24.120 --> 03:28.120
+The next day, Alice develops a dry cough and a fever.
+
+03:28.120 --> 03:29.520
+Alice gets tested.
+
+03:29.520 --> 03:30.520
+Alice has COVID-19.
+
+03:30.520 --> 03:33.180
+This is not a good day for Alice.
+
+03:33.180 --> 03:35.160
+But she won't suffer in vain.
+
+03:35.160 --> 03:39.560
+Alice tells her app to upload all of the random gibberish messages that it's been sending
+
+03:39.560 --> 03:42.440
+out to a hospital database.
+
+03:42.440 --> 03:45.960
+To do this, she uses a one-time passcode given to her by her doctor.
+
+03:45.960 --> 03:48.200
+This code is to prevent spam.
+
+03:48.200 --> 03:53.960
+The database then stores Alice's gibberish, and again, the random messages give no information
+
+03:53.960 --> 03:58.580
+about Alice, where she was, who she was with, what she was doing, or even how many people
+
+03:58.580 --> 03:59.720
+Alice met.
+
+03:59.720 --> 04:02.060
+It really is meaningless to the hospital.
+
+04:02.060 --> 04:04.560
+But it's not meaningless to Bob's phone.
+
+04:04.560 --> 04:08.720
+Bob's phone often checks this hospital list of random messages that have come in from
+
+04:08.720 --> 04:10.880
+COVID-19 positive cases.
+
+04:10.880 --> 04:15.360
+Essentially, the hospital's database is saying to all the phones out there, hey, we
+
+04:15.360 --> 04:17.360
+just got this new random gibberish.
+
+04:17.360 --> 04:22.480
+If you've seen that same random gibberish sometime in the last 14 days, it means you've
+
+04:22.480 --> 04:27.120
+been in contact with someone who just tested positive for COVID-19.
+
+04:27.120 --> 04:30.800
+Once Bob's phone recognizes some of these numbers that are the gibberish snippets now
+
+04:30.800 --> 04:36.640
+known to be associated with positive test cases, it can warn Bob to self-quarantine.
+
+04:36.640 --> 04:41.640
+So Bob cuts off the chain of transmissions, we're staying one step ahead of the virus.
+
+04:41.640 --> 04:42.640
+And that's it!
+
+04:42.640 --> 04:47.760
+That's how digital contact tracing apps can proactively prevent the spread of COVID-19
+
+04:47.760 --> 04:50.000
+while also protecting our rights.
+
+04:50.000 --> 04:51.280
+Thanks Alice and Bob.
+
+04:51.280 --> 04:58.760
+Stay safe.
+
+04:58.760 --> 05:03.040
+One important thing to realize is that you don't need everyone to have these apps.
+
+05:03.040 --> 05:07.180
+Estimates have it that about 60% would do the trick for COVID-19.
+
+05:07.180 --> 05:11.520
+Even if you can't catch all possible contacts, what you need is to catch enough so that the
+
+05:11.520 --> 05:16.820
+spread of coronavirus shifts from growing exponentially to shrinking exponentially.
+
+05:16.820 --> 05:22.460
+For those of you who know what this means, what we need is for r to drop below 1.
+
+05:22.460 --> 05:26.080
+The author of the post that this video is an adaptation of is a friend of mine, Nicky
+
+05:26.080 --> 05:29.240
+Case, who is a brilliant programmer and artist.
+
+05:29.240 --> 05:33.920
+He often makes these interactive explanations of societally important ideas, including a
+
+05:33.920 --> 05:38.880
+new one all about what happens next with COVID-19, so I would highly recommend taking a look
+
+05:38.880 --> 05:41.000
+at his work if you get the chance.
+
+05:41.000 --> 05:44.880
+He kindly made this post public domain, and moreover helped me in putting together this
+
+05:44.880 --> 05:46.360
+video.
+
+05:46.360 --> 05:50.680
+Any reasonable plan for reopening the economy without causing a second wave in the virus
+
+05:50.680 --> 05:54.960
+will include some kind of contact tracing, and given how counterintuitive the privacy
+
+05:54.960 --> 05:59.520
+protection here can be, I wanted to do all that I could to help amplify this message.
+
+05:59.520 --> 06:04.120
+If you agree, please do share either Nicky's original post or this video adaptation of
+
+06:04.120 --> 06:05.120
+it.
+
+06:05.120 --> 06:08.680
+And since the time Nicky posted that, Apple and Google have put out press releases about
+
+06:08.680 --> 06:11.800
+their own interoperable contact tracing systems.
+
+06:11.800 --> 06:15.720
+And I'll tell you, I'm one of those people who aggressively turns off location tracking
+
+06:15.720 --> 06:21.520
+as much as I can on my phone, no matter how annoying the apps can be about asking.
+
+06:21.520 --> 06:26.320
+But I'm 100% on board with these apps, because it's not tracking your location or anything
+
+06:26.320 --> 06:27.480
+like that.
+
+06:27.480 --> 06:31.020
+And if you're a nerd like me who wants to dig into cryptography a bit, I would recommend
+
+06:31.020 --> 06:35.580
+looking at the white paper and code for the DP3T algorithm, for which I've left links
+
+06:35.580 --> 06:37.500
+in the description.
+
+06:37.500 --> 06:42.240
+And as a final note, among the many unfortunate consequences of the lockdowns is a spike in
+
+06:42.240 --> 06:46.000
+calls to mental health services, like the suicide prevention hotline.
+
+06:46.000 --> 06:49.880
+If someone you know is at risk of suicide, give them a call, make sure they're doing
+
+06:49.880 --> 06:53.760
+okay, and if you're at risk, take a look at the resources in the description.
+
+06:53.760 --> 06:56.680
+And if it's an option, reach out to the people in your life to talk about what you're
+
+06:56.680 --> 07:19.840
+going through.
+

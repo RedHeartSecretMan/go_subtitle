@@ -1,0 +1,203 @@
+Do not hit the like button or the dislike button, at least not yet.
+I want you to consider a problem that's been one of the most controversial in math and philosophy over the past 20 years.
+There is no consensus answer, so I want you to listen to the problem
+and then vote for the answer you prefer using the like and dislike buttons, okay?
+Here is the setup.
+Sleeping Beauty volunteers to be the subject of an experiment, and before it starts, she's informed of the procedure.
+On Sunday night, she will be put to sleep, and then a fair coin will be flipped.
+If that coin comes up heads, she'll be awakened on Monday and then put back to sleep.
+If the coin comes up tails, she will also be awakened on Monday and put back to sleep,
+but then she will be awakened on Tuesday as well and then put back to sleep.
+Now, each time she gets put back to sleep, she will forget that she was ever awakened.
+In the brief period, anytime she's awake, she will be told no information,
+but she'll be asked one question.
+What do you believe is the probability that the coin came up heads?
+So how should she answer?
+Feel free to pause the video and answer the question for yourself right now.
+This was my reaction after hearing the problem for the first time.
+I mean, the intuitive answer that pops into my head is clearly 1 in 3.
+It could be the Monday when it came up heads, or it could be the Monday when it came up tails,
+or it could be the Tuesday when it came up tails.
+But you know what's really interesting is you just answered that the probability of a coin coming up heads is 1 in 3.
+I think a lot of this comes down to what specific question is asked of her.
+What is the probability that a fair coin flipped gives heads?
+That's 50%.
+What is the probability that the coin came up heads?
+I would say the answer is a third from her perspective.
+It's remarkably the same question.
+The simple reason why Sleeping Beauty should say the probability of heads is 1 in 3
+is because she knows the coin is fair.
+Nothing changes between when the coin is flipped and when she wakes up.
+And she knew for a fact that she would be woken up, and she receives no new information when that happens.
+Imagine that instead of flipping the coin after she's asleep,
+the experimenters flip the coin first and ask her immediately,
+what's the probability that the coin came up heads?
+Well, she would certainly say 1 in half.
+So why should anything change after she goes to sleep and wakes up?
+This is known as the halfer position.
+But there is another way to look at it.
+Others would argue that something does change when she's awakened.
+I mean, it seems like she gets no new information.
+There are no calendars.
+No one tells her anything, and she knew that she would be woken up.
+But she actually learns something important.
+She learns that she's gone from existing in a reality where there are two possible states,
+the coin came up either heads or tails,
+to existing in a reality where there are three possible states,
+Monday heads, Monday tails, or Tuesday tails.
+And therefore, she should assign equal probability to each of these three outcomes,
+where heads only occurred in one.
+So the probability that the coin came up heads is 1 third.
+This is known as the thirder position.
+Now, I know it seems wrong to suggest that a fair coin should have a 1 third probability of coming up heads,
+but that's because the question she's asked is subtly different.
+The implied question is, given you're awake,
+what's the probability that the coin came up heads?
+And that is 1 third.
+Now, halfers would counter that just because there are three possible outcomes
+doesn't mean they are each equally likely.
+In the Monty Hall problem, for example,
+the contestant ultimately has to choose between two doors.
+But it'd be wrong to assign them 50-50 odds.
+The prize is actually twice as likely to be behind one door than the other.
+In the Sleeping Beauty problem,
+we know a heads outcome and a tails outcome are equally likely,
+so the chance of waking up on Monday with heads is 50%,
+and the chance of waking up on Monday or Tuesday with tails should be 50%.
+Therefore, the tails probability gets split across two days, 25% each.
+But if you repeat the experiment over and over,
+which you can try for yourself by repeatedly flipping a coin,
+you find she wakes up a third of the time Monday heads,
+a third of the time Monday tails,
+and a third of the time Tuesday tails,
+not 50-25-25 like the previous analysis would suggest.
+So if you were Sleeping Beauty and you were awakened and asked,
+what's the probability the coin came up heads?
+What would you say?
+If you would say 1 third, then hit the like button.
+If you would say 1 half, hit the dislike button.
+The answer may seem obvious to you,
+but you should know that to other people, the other answer seems equally obvious.
+And that's why hundreds and hundreds of philosophy papers
+have been published on this problem over the past 22 years.
+There have been many variations of this problem,
+like what if instead of being woken up twice if the coin lands tails,
+she's instead woken up a million times?
+If the coin comes up heads, she's still woken only once.
+Doesn't it seem absurd in this case when Sleeping Beauty wakes up
+to say that it was just as likely that the coin landed heads as tails,
+when we know there are a million more wakeups in the tails case
+than in the heads case?
+I mean, if you reach into a bag of one white marble and a million black marbles,
+what are the chances that you pull out that one white marble?
+I was pretty convinced by this, and I considered myself a thirder,
+but this same argument is used to convince people
+that we're living in a simulation.
+The thinking goes that our computing technology has improved so dramatically,
+even over just the last 40 years,
+that we can imagine a time in the not-too-distant future
+when we can create a completely realistic simulation of our world.
+And once that occurs,
+it should be trivial to make unlimited copies of that simulation.
+And then if you were to ask someone if they're living in a simulation,
+they would have to admit that they probably are,
+because there are many more instances of that existence
+than the one true external reality.
+But how do we know that this hasn't happened already,
+and that we're living inside a simulation?
+I mean, if it can happen, then it probably has happened,
+and we are living in a simulation.
+This seems like the logical conclusion of the thirder worldview.
+Now, I personally don't buy that I'm living in a simulation,
+and I think most people don't buy it,
+but maybe that's just a logical bias.
+But there's another thought experiment
+that makes me seriously reconsider the thirder position.
+Let's say there's a soccer game between a really great team like Brazil
+and a less world-dominating team like Canada.
+So the odds are 80-20 in Brazil's favor.
+Now, a researcher is going to put you to sleep before the game starts.
+And if Brazil wins, they'll wake you up one time.
+But if Canada wins, they'll wake you up 30 times in a row.
+And just like Sleeping Beauty,
+you won't remember if you've been woken before.
+Okay, so the game is about to start.
+You fall asleep.
+And now you're woken up.
+Who do you think won the game?
+The thirder would say Canada,
+but I would almost certainly say Brazil.
+I mean, why should I give any weight
+to what the researcher would have done if Canada had won
+when I'm fairly confident that they won't?
+To extend this, let's say Brazil plays Canada five times,
+and we do this experiment each time.
+Well, then if you say Brazil each time you're woken up,
+you'll probably be right about four out of five of the games.
+But if you said Canada every time,
+you would be wrong about those four games,
+but right 30 times in a row
+when you're repeatedly asked about Canada's one victory.
+If you stand to win a bet
+by correctly answering the question,
+then by all means, you should bet on Canada.
+But if you want to correctly pick the winner
+of more of the games, well, then you should say Brazil.
+And this is what's at the heart of the dispute
+between halfers and thirders in the Sleeping Beauty problem.
+If you want to be right about the outcome
+of the coin tosses,
+well, you should say the probability of heads is a half.
+But if you want to answer more questionings correctly,
+well, then you should say one third.
+I want to leave you with one last thought experiment.
+Imagine that you know for a fact
+that before our universe began, there was a coin flip.
+And if it came up heads,
+only a single universe would be created.
+But if it came up tails,
+a quasi-infinite multiverse would be created.
+And in each of those multiverse universes,
+you'd find every possible variation of Earth
+and the people on it.
+In some versions, there would be no Earth.
+Now, you becoming conscious
+is just like Sleeping Beauty waking up.
+There's no way to tell if you're in that single universe
+or in one of the multiverse universes,
+but you know there are a lot more of them.
+So would you think that you're for sure in the multiverse
+or are the chances 50-50?
+The best way to develop intuition about probability
+is by working through scenarios or running simulations
+like we did for Sleeping Beauty.
+This video's sponsor, Brilliant,
+offers probability courses that walk you through
+lots of situational probability questions.
+Do you want to learn how to build your own simulations?
+Go check out Brilliant.
+You can try it free for 30 days
+at brilliant.org slash Veritasium.
+You know, to me, Brilliant is the best way to learn
+because it forces you to think critically.
+And it's also a lot of fun.
+I mean, I find learning new things
+and sharpening my thinking energizing.
+In their lessons, you model the real world with math
+and expand your understanding of cutting edge topics
+like AI and machine learning,
+technology that's transforming our world right now.
+Are we actually living in a computer simulation
+or a multiverse?
+Who knows?
+But with Brilliant, you might actually get started
+on your journey to figuring it out.
+They already have thousands of lessons
+and new ones are added every month.
+So if you want to get started
+with Brilliant's annual premium subscription,
+they're giving 20% off to the first 200 people
+to sign up via my link, brilliant.org slash Veritasium.
+I will put that down in the description.
+So I want to thank Brilliant for supporting Veritasium
+and I want to thank you for watching.
