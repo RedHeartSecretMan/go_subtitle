@@ -5,7 +5,7 @@ from setuptools import setup, find_namespace_packages
 setup(
     name="go_subtitle",
     py_modules=["subtitler"],
-    version="0.0.1",
+    version="0.0.2",
     license="MIT",
     
     python_requires='>=3.6',
