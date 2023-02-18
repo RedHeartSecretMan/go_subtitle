@@ -48,7 +48,7 @@ pip install git+https://github.com/RedHeartSecretMan/go_subtitle.git
 
 ### Command Line
 
-**提供两种命令行运行方式，通过指定 *python* 模块 *`python -m subtitler [command]`* 或触发关键 *`go_subtitle [command]`***
+**提供两种命令行运行方式，通过指定 *python* 模块 *`python -m subtitler [command]`* 或触发关键字 *`go_subtitle [command]`***
 
 > ***Provides two ways to run the command line, by specifying python module `python -m subtitler [command]` or trigger key `go_subtitle [command]`***
 
@@ -78,7 +78,7 @@ go_subtitle -h
 
 ### Python
 
-**项目基于 *Whisper* 二次开发大多数情况 *API* 互相兼容**
+**提供了几种简单的使用方法，并且因为项目基于 *Whisper* 二次开发所以大多数 *API* 可以互相兼容**
 
 ```python
 import torch
