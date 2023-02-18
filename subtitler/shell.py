@@ -18,7 +18,7 @@ def get_args():
                         help="audios or videos file directory(file parent folder or itself) to process")
     parser.add_argument("--output_dir", "-o", type=str,
                         default="./result", help="directory to save the outputs")
-    
+
     # 可选参数 - 字幕、音频和视频设置
     parser.add_argument("--outsubtitle_format", "-osf", type=str, default="all", choices=["txt", "vtt", "srt", "tsv", "json", "all"],
                         help="format of the output subtitle file; default all available formats will be produced")
@@ -46,7 +46,7 @@ def get_args():
                         help="whether to perform inference in fp16; True by default")
     parser.add_argument("--verbose", type=str2bool, default=False,
                         help="Whether to display model decoded output text in the console")
-    
+
     # 可选参数 - 任务
     parser.add_argument("--task", type=str, default="transcribe", choices=["transcribe", "translate"],
                         help="whether to perform X->X speech recognition ('transcribe') or X->English translation ('translate')")
@@ -59,9 +59,9 @@ def get_avpath(input_dir):
         if os.path.isfile(subinput_dir):
             file_type = filetype.guess(subinput_dir)
             if file_type:
-                if "audio" in filetype.guess(subinput_dir).mime: 
+                if "audio" in filetype.guess(subinput_dir).mime:
                     allav_path["audio"].append(subinput_dir)
-                if "video" in filetype.guess(subinput_dir).mime: 
+                if "video" in filetype.guess(subinput_dir).mime:
                     allav_path["video"].append(subinput_dir)
         elif os.path.isdir(subinput_dir):
             for root, _, files in os.walk(subinput_dir):
@@ -69,13 +69,13 @@ def get_avpath(input_dir):
                     file_path = os.path.join(root, file)
                     file_type = filetype.guess(file_path)
                     if file_type:
-                        if "audio" in filetype.guess(file_path).mime: 
+                        if "audio" in filetype.guess(file_path).mime:
                             allav_path["audio"].append(file_path)
-                        if "video" in filetype.guess(file_path).mime: 
+                        if "video" in filetype.guess(file_path).mime:
                             allav_path["video"].append(file_path)
         else:
             pass
-    return allav_path   
+    return allav_path
 
 
 def extract_audio(video_path,
@@ -86,15 +86,16 @@ def extract_audio(video_path,
                               f"{os.path.basename(os.path.splitext(video_path)[0])}_audio")
     os.makedirs(audio_dir, exist_ok=True)
     audio_path = os.path.join(audio_dir,
-                              f"{os.path.basename(os.path.splitext(video_path)[0])}.{outaudio_format}")                             
+                              f"{os.path.basename(os.path.splitext(video_path)[0])}.{outaudio_format}")
 
-    print(f"Extracting audio from {video_path}...")  
+    print(f"Extracting audio from {video_path}...")
     try:
         (
             ffmpeg.input(video_path, threads=0).audio
             .output(audio_path)
             .run(capture_stdout=True, capture_stderr=True, overwrite_output=True)
         )
+        print(f"Saved audio extracted from video to {os.path.abspath(audio_path)}.")
     except ffmpeg.Error as e:
         raise RuntimeError(f"Failed to extract audio: {e.stderr.decode()}") from e
 
@@ -102,9 +103,9 @@ def extract_audio(video_path,
 
 
 def generate_subtitle(model,
-                      allav_path, 
-                      output_dir = ".", 
-                      outsubtitle_format = "all", 
+                      allav_path,
+                      output_dir = ".",
+                      outsubtitle_format = "all",
                       outaudio_format = "wav",
                       outvideo_addsubtitle_format = "srt",
                       outvideo_format = "mp4",
@@ -112,23 +113,23 @@ def generate_subtitle(model,
                       outvideo_addsubtitle = True,
                       **args):
     # 处理音频文件
-    allaudio_path = allav_path["audio"]   
+    allaudio_path = allav_path["audio"]
     for audio_path in allaudio_path:
         subtitle_dir = os.path.join(output_dir,
                                     f"{os.path.basename(os.path.splitext(audio_path)[0])}_subtitle")
         os.makedirs(subtitle_dir, exist_ok=True)
-        
+
         print(f"Generating subtitles for {os.path.basename(audio_path)}...")
         warnings.filterwarnings("ignore")
         result = transcribe(model, audio=audio_path, **args)
         warnings.filterwarnings("default")
-        
+
         writer = get_writer(outsubtitle_format, subtitle_dir)
         writer(result, os.path.splitext(audio_path)[0])
-          
+
     # 处理视频文件
     allvideo_path = allav_path["video"]
-    for video_path in allvideo_path:        
+    for video_path in allvideo_path:
         subtitle_dir = os.path.join(output_dir,
                                     f"{os.path.basename(os.path.splitext(video_path)[0])}_subtitle")
         os.makedirs(subtitle_dir, exist_ok=True)
@@ -138,19 +139,19 @@ def generate_subtitle(model,
         audio_path = extract_audio(video_path, output_dir, outaudio_format, outaudio_invideo)
         result = transcribe(model, audio=audio_path, **args)
         warnings.filterwarnings("default")
-   
+
         writer = get_writer(outsubtitle_format, subtitle_dir)
         writer(result, os.path.splitext(video_path)[0])
-     
+
         if outvideo_addsubtitle:
             writer = get_writer(outvideo_addsubtitle_format, subtitle_dir)
             writer(result, os.path.splitext(video_path)[0])
-            subtitle_invideo_path = os.path.join(subtitle_dir, 
+            subtitle_invideo_path = os.path.join(subtitle_dir,
                                                  f"{os.path.basename(os.path.splitext(video_path)[0])}.{outvideo_addsubtitle_format}")
-            outvideo_dir = os.path.join(output_dir, 
+            outvideo_dir = os.path.join(output_dir,
                                          f"{os.path.basename(os.path.splitext(video_path)[0])}_video")
             os.makedirs(outvideo_dir, exist_ok=True)
-            outvideo_path = os.path.join(outvideo_dir,                             
+            outvideo_path = os.path.join(outvideo_dir,
                                          f"{os.path.basename(os.path.splitext(video_path)[0])}.{outvideo_format}")
 
             print(f"Adding subtitles to {os.path.basename(video_path)}...")
@@ -160,11 +161,16 @@ def generate_subtitle(model,
                 video = ffmpeg.filter(video, "subtitles", subtitle_invideo_path, force_style="OutlineColour=&H40000000, BorderStyle=3")
                 video = ffmpeg.concat(video, audio, v=1, a=1)
                 video.output(outvideo_path).run(capture_stdout=True, capture_stderr=True, overwrite_output=True)
-                print(f"Saved subtitled video to {os.path.abspath(outvideo_path)}")
+                print(f"Saved subtitled video to {os.path.abspath(outvideo_path)}.")
             except ffmpeg.Error as e:
-                print(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}.\nNext try run ffmpeg directly in terminal")
-                os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path}")
-                
+                warnings.warn(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}. maybe subtitles and video formats are incompatible.")
+                print(f"Next force running a potentially compatible format using ffmpeg on the terminal, and import the generated subtitles for the video yourself if the error continues!!!")
+                if outvideo_format == "mp4":
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy -c:s mov_text {outvideo_path} -loglevel quiet")
+                else:
+                    outvideo_path = f"{os.path.splitext(outvideo_path)[0]}.mkv"
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path} -loglevel quiet")
+
 
 def main():
     # 获取参数
@@ -172,13 +178,13 @@ def main():
 
     # 获取音频或视频文件路径  
     input_dir: str = args.pop("input_dir")
-    assert (not input_dir == None) and all([os.path.exists(path) for path in input_dir]), "You don't give any video or audio path"
+    assert (not input_dir is None) and all([os.path.exists(path) for path in input_dir]), "You don't give any video or audio path"
     allav_path = get_avpath(input_dir)
-    
+
     # 创建字幕、音频和视频的输出目录
     output_dir: str = args.pop("output_dir")
     os.makedirs(output_dir, exist_ok=True)
-    
+
     # 设置保存字幕、音频和视频的参数 
     outsubtitle_format: str = args.pop("outsubtitle_format")
     outvideo_addsubtitle_format: str = args.pop("outvideo_addsubtitle_format")
@@ -186,21 +192,21 @@ def main():
     outvideo_format: str = args.pop("outvideo_format")
     outaudio_invideo: str2bool = args.pop("outaudio_invideo")
     outvideo_addsubtitle: str2bool = args.pop("outvideo_addsubtitle")
-          
+
     # 导入模型
     model_name: str = args.pop("model_name")
     assert os.path.isfile(model_name) or model_name in available_models(), "The model file does not exist please check the input parameter \"--model_name\""
     if model_name.endswith(".en") and args["language"] not in {"en", "English"}:
         if args["language"] is not None:
             warnings.warn(f"{model_name} is an English-only model but receipted '{args['language']}'; using English instead.")
-        args["language"] = "en"     
+        args["language"] = "en"
     device: str = args.pop("device")
     model = load_model(model_name, device)
     threads: int = args.pop("threads")
     if threads is not None:
         if threads > 0:
             torch.set_num_threads(threads)
-    
+
     # 提取字幕
     generate_subtitle(model,
                       allav_path,
@@ -216,4 +222,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
