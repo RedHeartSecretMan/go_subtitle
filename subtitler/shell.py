@@ -40,8 +40,8 @@ def get_args():
                         help="language spoken in the audio, specify None to perform language detection")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu",
                         help="device to use for PyTorch inference")
-    parser.add_argument("--threads", type=optional_int, default=0,
-                        help="number of threads used by torch for cpu inference")
+    parser.add_argument("--threads", type=optional_int, default=None,
+                        help="use torch set cpu inference number of threads, default use MKL and OMP auto set")
     parser.add_argument("--fp16", type=str2bool, default=True,
                         help="whether to perform inference in fp16; True by default")
     parser.add_argument("--verbose", type=str2bool, default=False,
@@ -162,7 +162,7 @@ def generate_subtitle(model,
                 video.output(outvideo_path).run(capture_stdout=True, capture_stderr=True, overwrite_output=True)
                 print(f"Saved subtitled video to {os.path.abspath(outvideo_path)}")
             except ffmpeg.Error as e:
-                print(f"Adding subtitles to {os.path.basename(video_path)} fail because {e}.\n Next try using ffmpeg directly in terminal")
+                print(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}.\nNext try run ffmpeg directly in terminal")
                 os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path}")
                 
 
@@ -195,10 +195,11 @@ def main():
             warnings.warn(f"{model_name} is an English-only model but receipted '{args['language']}'; using English instead.")
         args["language"] = "en"     
     device: str = args.pop("device")
-    threads: int = args.pop("threads")
-    if threads > 0 and device == "cpu":
-        torch.set_num_threads(threads)
     model = load_model(model_name, device)
+    threads: int = args.pop("threads")
+    if threads is not None:
+        if threads > 0:
+            torch.set_num_threads(threads)
     
     # 提取字幕
     generate_subtitle(model,
