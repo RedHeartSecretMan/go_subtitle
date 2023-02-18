@@ -95,6 +95,7 @@ def extract_audio(video_path,
             .output(audio_path)
             .run(capture_stdout=True, capture_stderr=True, overwrite_output=True)
         )
+        print(f"Saved audio extracted from video to {os.path.abspath(audio_path)}.")
     except ffmpeg.Error as e:
         raise RuntimeError(f"Failed to extract audio: {e.stderr.decode()}") from e
 
@@ -160,10 +161,15 @@ def generate_subtitle(model,
                 video = ffmpeg.filter(video, "subtitles", subtitle_invideo_path, force_style="OutlineColour=&H40000000, BorderStyle=3")
                 video = ffmpeg.concat(video, audio, v=1, a=1)
                 video.output(outvideo_path).run(capture_stdout=True, capture_stderr=True, overwrite_output=True)
-                print(f"Saved subtitled video to {os.path.abspath(outvideo_path)}")
+                print(f"Saved subtitled video to {os.path.abspath(outvideo_path)}.")
             except ffmpeg.Error as e:
-                print(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}.\nNext try run ffmpeg directly in terminal")
-                os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path}")
+                warnings.warn(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}. maybe subtitles and video formats are incompatible.")
+                print(f"Next force running a potentially compatible format using ffmpeg on the terminal, and import the generated subtitles for the video yourself if the error continues!!!")
+                if outvideo_format == "mp4":
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy -c:s mov_text {outvideo_path} -loglevel quiet")
+                else:
+                    outvideo_path = f"{os.path.splitext(outvideo_path)[0]}.mkv"
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path} -loglevel quiet")
                 
 
 def main():
