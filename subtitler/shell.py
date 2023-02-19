@@ -166,10 +166,10 @@ def generate_subtitle(model,
                 warnings.warn(f"Adding subtitles to {os.path.basename(video_path)} fail because via python run {e}. maybe subtitles and video formats are incompatible.")
                 print(f"Next force running a potentially compatible format using ffmpeg on the terminal, and import the generated subtitles for the video yourself if the error continues!!!")
                 if outvideo_format == "mp4":
-                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy -c:s mov_text {outvideo_path} -loglevel quiet")
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy -c:s mov_text {outvideo_path}")
                 else:
                     outvideo_path = f"{os.path.splitext(outvideo_path)[0]}.mkv"
-                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path} -loglevel quiet")
+                    os.system(f"ffmpeg -i {video_path} -i {subtitle_invideo_path} -c copy {outvideo_path}")
 
 
 def main():
@@ -198,7 +198,7 @@ def main():
     assert os.path.isfile(model_name) or model_name in available_models(), "The model file does not exist please check the input parameter \"--model_name\""
     if model_name.endswith(".en") and args["language"] not in {"en", "English"}:
         if args["language"] is not None:
-            warnings.warn(f"{model_name} is an English-only model but receipted '{args['language']}'; using English instead.")
+            warnings.warn(f"{model_name} is an English-only model but receipted {args['language']}; using English instead.")
         args["language"] = "en"
     device: str = args.pop("device")
     model = load_model(model_name, device)
