@@ -16,8 +16,8 @@ def get_args():
     # 核心参数 - 输入输出路径
     parser.add_argument("--input_dir", "-i", type=str, default=None, nargs="*",
                         help="audios or videos file directory(file parent folder or itself) to process")
-    parser.add_argument("--output_dir", "-o", type=str,
-                        default="./result", help="directory to save the outputs")
+    parser.add_argument("--output_dir", "-o", type=str, default="./result",
+                        help="directory to save the outputs")
 
     # 可选参数 - 字幕、音频和视频设置
     parser.add_argument("--outsubtitle_format", "-osf", type=str, default="all", choices=["txt", "vtt", "srt", "tsv", "json", "all"],
