@@ -1,2 +1,0 @@
-[console_scripts]
-go_subtitle = subtitler.shell:main
