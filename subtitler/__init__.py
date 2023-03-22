@@ -8,11 +8,11 @@
 其中 __init__.py 的 __name__ 与 __package__ 属性都是 "go_subtitle"
 """
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 # 定义 import go_subtitle 暴露的接口
 from .weight import available_models, load_model
 from .audio import load_audio, log_mel_spectrogram, pad_or_trim
 from .decoding import DecodingOptions, DecodingResult, decode, detect_language
 from .model import Whisper, ModelDimensions
-from .shell import generate_subtitle, extract_audio, get_avpath
+from .app import generate_subtitle, extract_audio, get_avpath

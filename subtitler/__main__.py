@@ -8,7 +8,7 @@
 其中 __main__.py 的 __name__ 属性是 "__main__" 而 __package__ 属性是 "" 空字符串
 """
 
-from .shell import main
+from .app import main
 
 
 main()
