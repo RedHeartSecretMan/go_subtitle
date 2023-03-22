@@ -175,7 +175,7 @@ def generate_subtitle(model,
 def main():
     # 获取参数
     args = get_args().__dict__
-
+    
     # 获取音频或视频文件路径  
     input_dir: str = args.pop("input_dir")
     assert (not input_dir is None) and all([os.path.exists(path) for path in input_dir]), "You don't give any video or audio path"
