@@ -34,7 +34,7 @@ def get_args():
                         help="whether to output the video with subtitles")
 
     # 可选参数 - 模型设置
-    parser.add_argument("--model_name", "-mn", default="small", type=str,
+    parser.add_argument("--model_name", "-mn", default="medium", type=str,
                         help=f"input model's local file path or remote file proxy (in {available_models()})")
     parser.add_argument("--language", type=str, default=None, choices=sorted(LANGUAGES.keys()) + sorted([k.title() for k in TO_LANGUAGE_CODE.keys()]),
                         help="language spoken in the audio, specify None to perform language detection")
@@ -73,8 +73,7 @@ def get_avpath(input_dir):
                             allav_path["audio"].append(file_path)
                         if "video" in filetype.guess(file_path).mime:
                             allav_path["video"].append(file_path)
-        else:
-            pass
+
     return allav_path
 
 
