@@ -34,7 +34,7 @@ ffmpeg -version
 
 ```shell
 # 从PyPI安装
-pip install -U go_subtitle
+pip install -U go_subtitle -i https://pypi.org/simple
 
 # 从GitHub安装
 pip install git+https://github.com/RedHeartSecretMan/go_subtitle.git
@@ -88,7 +88,7 @@ import subtitler
 # 方式一
 model = subtitler.load_model("small")
 avpath = subtitler.get_avpath(["assets/data/test/audios"])
-audio_path = subtitler.generate_subtitle(model, avpath)
+audio_path = subtitler.generate_subtitle(model, avpath, **{"task": "translate"})
 
 
 # 方式二
