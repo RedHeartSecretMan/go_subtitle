@@ -8,7 +8,8 @@
 其中 __main__.py 的 __name__ 属性是 "__main__" 而 __package__ 属性是 "" 空字符串
 """
 
-from .app import main
+from subtitler.app import main
 
 
-main()
+if __name__ == '__main__':
+    main()
