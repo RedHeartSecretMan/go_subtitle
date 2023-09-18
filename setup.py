@@ -26,7 +26,7 @@ setup(
         )
     ],
     entry_points={
-        "console_scripts": ["go_subtitle=subtitler.app:main"],
+        "console_scripts": ["go_subtitle=subtitler.__main__:main"],
     },
     include_package_data=True,
     
