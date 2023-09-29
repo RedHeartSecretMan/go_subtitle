@@ -96,7 +96,7 @@ audio_path = subtitler.generate_subtitle(model, avpath, **{"task": "translate"})
 model = subtitler.load_model("medium")
 
 # load audio and pad/trim it to fit 30 seconds
-audio = subtitler.load_audio("assets/data/test/audios/Mojito.mp3")
+audio = subtitler.load_audio("data/test/audios/Mojito.mp3")
 audio = subtitler.pad_or_trim(audio)
 
 # make log-Mel spectrogram and move to the same device as the model
@@ -107,10 +107,9 @@ _, probs = model.detect_language(mel)
 print(f"Detected language: {max(probs, key=probs.get)}")
 
 # decode the audio
-options = {}
+options = {"language": max(probs, key=probs.get)}
 options["fp16"] = True if torch.cuda.is_available() else False
 options = subtitler.DecodingOptions(**options)
-
 result = subtitler.decode(model, mel, options)
 
 # print the recognized text
@@ -122,7 +121,7 @@ print(result.text)
 model = subtitler.load_model("large")
 
 # gain audio stream, load audio and pad/trim it to fit 30 seconds
-audio_path = subtitler.extract_audio("assets/data/test/videos/接触.mp4")
+audio_path = subtitler.extract_audio("data/test/videos/接触.mp4")
 audio = subtitler.load_audio(audio_path)
 audio = subtitler.pad_or_trim(audio)
 
@@ -134,7 +133,7 @@ _, probs = model.detect_language(mel)
 print(f"Detected language: {max(probs, key=probs.get)}")
 
 # decode the audio
-options = {}
+options = {"language": max(probs, key=probs.get)}
 options["fp16"] = True if torch.cuda.is_available() else False
 options = subtitler.DecodingOptions(**options)
 result = subtitler.decode(model, mel, options)

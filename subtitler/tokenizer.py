@@ -6,7 +6,6 @@ from functools import cached_property, lru_cache
 from typing import Dict, List, Optional, Tuple
 
 import tiktoken
-from tiktoken_ext.openai_public import gpt2
 
 LANGUAGES = {
     "en": "english",
@@ -227,7 +226,7 @@ class Tokenizer:
 
     @cached_property
     def all_language_codes(self) -> Tuple[str]:
-        return tuple(self.decode([l]).strip("<|>") for l in self.all_language_tokens)
+        return tuple(self.decode([_l]).strip("<|>") for _l in self.all_language_tokens)
 
     @cached_property
     def sot_sequence_including_notimestamps(self) -> Tuple[int]:
@@ -352,7 +351,7 @@ def get_encoding(name: str = "gpt2"):
     return tiktoken.Encoding(
         name=os.path.basename(vocab_path),
         explicit_n_vocab=n_vocab,
-        pat_str=gpt2()["pat_str"],
+        pat_str=r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
         mergeable_ranks=ranks,
         special_tokens=special_tokens,
     )

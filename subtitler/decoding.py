@@ -146,6 +146,10 @@ class PyTorchInference(Inference):
         self.kv_cache = {}
         self.hooks = []
 
+        key_modules = [block.attn.key for block in self.model.decoder.blocks]
+        value_modules = [block.attn.value for block in self.model.decoder.blocks]
+        self.kv_modules = key_modules + value_modules
+
     def logits(self, tokens: Tensor, audio_features: Tensor) -> Tensor:
         if not self.kv_cache:
             self.kv_cache, self.hooks = self.model.install_kv_cache_hooks()
@@ -164,9 +168,10 @@ class PyTorchInference(Inference):
         self.hooks = []
 
     def rearrange_kv_cache(self, source_indices):
-        for module, tensor in self.kv_cache.items():
-            # update the key/value cache to contain the selected sequences
-            self.kv_cache[module] = tensor[source_indices].detach()
+        if source_indices != list(range(len(source_indices))):
+            for module in self.kv_modules:
+                # update the key/value cache to contain the selected sequences
+                self.kv_cache[module] = self.kv_cache[module][source_indices].detach()
 
 
 class SequenceRanker:
@@ -469,7 +474,12 @@ class ApplyTimestampRules(LogitFilter):
             ]
             if timestamps.numel() > 0:
                 # timestamps shouldn't decrease; forbid timestamp tokens smaller than the last
-                logits[k, self.tokenizer.timestamp_begin : timestamps[-1]] = -np.inf
+                # also force each segment to have a nonzero length, to prevent infinite looping
+                if last_was_timestamp and not penultimate_was_timestamp:
+                    timestamp_last = timestamps[-1]
+                else:
+                    timestamp_last = timestamps[-1] + 1
+                logits[k, self.tokenizer.timestamp_begin : timestamp_last] = -np.inf
 
         if tokens.shape[1] == self.sample_begin:
             # suppress generating non-timestamp tokens at the beginning
@@ -663,7 +673,6 @@ class DecodingTask:
         return languages, lang_probs
 
     def _main_loop(self, audio_features: Tensor, tokens: Tensor):
-        assert audio_features.shape[0] == tokens.shape[0]
         n_batch = tokens.shape[0]
         sum_logprobs: Tensor = torch.zeros(n_batch, device=audio_features.device)
         no_speech_probs = [np.nan] * n_batch
@@ -716,8 +725,7 @@ class DecodingTask:
                 )
             ]
 
-        # repeat the audio & text tensors by the group size, for beam search or best-of-n sampling
-        audio_features = audio_features.repeat_interleave(self.n_group, dim=0)
+        # repeat text tensors by the group size, for beam search or best-of-n sampling
         tokens = tokens.repeat_interleave(self.n_group, dim=0).to(audio_features.device)
 
         # call the main sampling loop

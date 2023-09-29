@@ -1,5 +1,3 @@
-import argparse
-import os
 import warnings
 from typing import TYPE_CHECKING, Optional, Tuple, Union
 
@@ -18,15 +16,11 @@ from .audio import (
 )
 from .decoding import DecodingOptions, DecodingResult
 from .timing import add_word_timestamps
-from .tokenizer import LANGUAGES, TO_LANGUAGE_CODE, get_tokenizer
+from .tokenizer import LANGUAGES, get_tokenizer
 from .utils import (
     exact_div,
     format_timestamp,
-    get_writer,
     make_safe,
-    optional_float,
-    optional_int,
-    str2bool,
 )
 
 if TYPE_CHECKING:
@@ -35,7 +29,7 @@ if TYPE_CHECKING:
 
 def transcribe(
     model: "Whisper",
-    audio: Union[str, np.ndarray, torch.Tensor],
+    audio_path: Union[str, np.ndarray, torch.Tensor],
     *,
     verbose: Optional[bool] = None,
     temperature: Union[float, Tuple[float, ...]] = (0.0, 0.2, 0.4, 0.6, 0.8, 1.0),
@@ -118,7 +112,7 @@ def transcribe(
         decode_options["fp16"] = False
 
     # Pad 30-seconds of silence to the input audio, for slicing
-    mel = log_mel_spectrogram(audio, padding=N_SAMPLES)
+    mel = log_mel_spectrogram(audio_path, padding=N_SAMPLES)
     content_frames = mel.shape[-1] - N_FRAMES
 
     if decode_options.get("language", None) is None:
@@ -174,7 +168,11 @@ def transcribe(
                 and decode_result.avg_logprob < logprob_threshold
             ):
                 needs_fallback = True  # average log probability is too low
-
+            if (
+                no_speech_threshold is not None
+                and decode_result.no_speech_prob > no_speech_threshold
+            ):
+                needs_fallback = False  # silence
             if not needs_fallback:
                 break
 
@@ -218,6 +216,7 @@ def transcribe(
     with tqdm.tqdm(
         total=content_frames, unit="frames", disable=verbose is not False
     ) as pbar:
+        last_speech_timestamp = 0.0
         while seek < content_frames:
             time_offset = float(seek * HOP_LENGTH / SAMPLE_RATE)
             mel_segment = mel[:, seek : seek + N_FRAMES]
@@ -308,10 +307,6 @@ def transcribe(
                 )
                 seek += segment_size
 
-            if not condition_on_previous_text or result.temperature > 0.5:
-                # do not feed the prompt tokens if a high temperature was used
-                prompt_reset_since = len(all_tokens)
-
             if word_timestamps:
                 add_word_timestamps(
                     segments=current_segments,
@@ -321,10 +316,13 @@ def transcribe(
                     num_frames=segment_size,
                     prepend_punctuations=prepend_punctuations,
                     append_punctuations=append_punctuations,
+                    last_speech_timestamp=last_speech_timestamp,
                 )
                 word_end_timestamps = [
                     w["end"] for s in current_segments for w in s["words"]
                 ]
+                if len(word_end_timestamps) > 0:
+                    last_speech_timestamp = word_end_timestamps[-1]
                 if not single_timestamp_ending and len(word_end_timestamps) > 0:
                     seek_shift = round(
                         (word_end_timestamps[-1] - time_offset) * FRAMES_PER_SECOND
@@ -357,6 +355,10 @@ def transcribe(
                 [token for segment in current_segments for token in segment["tokens"]]
             )
 
+            if not condition_on_previous_text or result.temperature > 0.5:
+                # do not feed the prompt tokens if a high temperature was used
+                prompt_reset_since = len(all_tokens)
+
             # update progress bar
             pbar.update(min(content_frames, seek) - previous_seek)
 
@@ -365,3 +367,4 @@ def transcribe(
         segments=all_segments,
         language=language,
     )
+    

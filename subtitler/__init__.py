@@ -8,7 +8,7 @@
 其中 __init__.py 的 __name__ 与 __package__ 属性都是 "go_subtitle"
 """
 
-__version__ = "0.0.3"
+__version__ = "0.1.0"
 
 # 定义 import go_subtitle 暴露的接口
 from .weight import available_models, load_model

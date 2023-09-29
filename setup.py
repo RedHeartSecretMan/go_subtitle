@@ -13,10 +13,10 @@ if sys.platform.startswith("linux") and platform.machine() == "x86_64":
 setup(
     name="go_subtitle",
     py_modules=["subtitler"],
-    version="0.0.3",
+    version="0.1.0",
     license="MIT",
     
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     packages=find_namespace_packages(),
     install_requires=requirements
     + [
