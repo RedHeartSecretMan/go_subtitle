@@ -5,6 +5,11 @@ import pkg_resources
 from setuptools import setup, find_namespace_packages
 
 
+def read_version(fname="subtitler/version.py"):
+    exec(compile(open(fname, encoding="utf-8").read(), fname, "exec"))
+    return locals()["__version__"]
+
+
 requirements = []
 if sys.platform.startswith("linux") and platform.machine() == "x86_64":
     requirements.append("triton==2.0.0")
@@ -13,10 +18,9 @@ if sys.platform.startswith("linux") and platform.machine() == "x86_64":
 setup(
     name="go_subtitle",
     py_modules=["subtitler"],
-    version="0.1.0",
+    version=read_version(),
     license="MIT",
-    
-    python_requires='>=3.8',
+    python_requires=">=3.8",
     packages=find_namespace_packages(),
     install_requires=requirements
     + [
@@ -29,12 +33,11 @@ setup(
         "console_scripts": ["go_subtitle=subtitler.__main__:main"],
     },
     include_package_data=True,
-    
     author="HaoDaXia",
-    author_email = "wh18307094479@gmail.com",
+    author_email="wh18307094479@gmail.com",
     description="Generate subtitle from audio or video file",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     readme="README.md",
-    url="https://github.com/RedHeartSecretMan/go_subtitle",  
+    url="https://github.com/RedHeartSecretMan/go_subtitle",
 )

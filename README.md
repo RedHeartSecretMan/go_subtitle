@@ -12,7 +12,7 @@
 
 ### Setup
 
-**项目需要运行在包含 *[python3.8.16](https://www.python.org/downloads/release/python-3816/)* 与 *[ffmpeg4.2.2](https://ffmpeg.org/download.html#releases)* 或更新版本的环境中**
+**项目需要运行在包含 *[python3.8.16](https://www.python.org/downloads/release/python-3816/)* 与 *[ffmpeg4.2.2](https://ffmpeg.org/download.html#releases)* 或更高版本的环境中**
 
 > ***The project needs runs in an environment containing [python3.8.16](https://www.python.org/downloads/release/python-3816/) and [ffmpeg4.2.2](https://ffmpeg.org/download.html#releases) or later***
 
