@@ -1,10 +1,13 @@
 from faster_whisper import WhisperModel
 
-model_size = "large-v3"
+model_size = "large-v2"
 
 model = WhisperModel(model_size)
 
-segments, info = model.transcribe("/Users/WangHao/Downloads/刘伟达.wav", beam_size=5)
+segments, info = model.transcribe(
+    "./data/test/audios/Mojito.mp3",
+    beam_size=5,
+)
 
 print(
     "Detected language '%s' with probability %f"
