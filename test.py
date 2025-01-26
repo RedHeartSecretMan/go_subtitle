@@ -1,6 +1,7 @@
 import os
-from faster_whisper import WhisperModel
 from datetime import datetime
+
+from faster_whisper import WhisperModel
 
 
 def transcribe_directory(
@@ -23,8 +24,6 @@ def transcribe_directory(
         if filename.lower().endswith(audio_extensions):
             # Full path of the audio file
             audio_path = os.path.join(input_dir, filename)
-            if audio_path == "/Users/WangHao/Downloads/王欢-催记汇总/王欢-20240726.m4a":
-                continue
 
             # Create output filename (replace audio extension with .txt)
             output_filename = os.path.splitext(filename)[0] + ".txt"
@@ -67,5 +66,5 @@ def transcribe_directory(
 
 
 if __name__ == "__main__":
-    input_directory = "/to/user/data/path"
+    input_directory = "/Users/WangHao/Downloads/audios"
     transcribe_directory(input_directory)
