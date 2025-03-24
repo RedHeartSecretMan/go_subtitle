@@ -16,3 +16,20 @@ dependencies = [
     "torch>=2.5.1",
     "tqdm>=4.67.1",
 ]
+
+[tool.uv.sources]
+torch = [
+    { index = "torch-cpu", marker = "platform_system == 'Darwin'" },
+    { index = "torch-cu124", marker = "platform_system == 'Windows'" },
+    { index = "torch-cu124", marker = "platform_system == 'Linux'" },
+]
+
+[[tool.uv.index]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "torch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
