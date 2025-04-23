@@ -27,3 +27,22 @@ torch = [
 name = "cu124"
 url = "https://download.pytorch.org/whl/cu124"
 explicit = true
+
+[project.scripts]
+subtitler = "subtitler.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+packages = ["subtitler"]
+include = [
+    "subtitler/assets/*",
+    "subtitler/normalizers/*",
+    "pyproject.toml",
+    "requirements.txt",
+    "README.md",
+    "LICENSE",
+]
+exclude = ["**/__pycache__"]
